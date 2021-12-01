@@ -14,7 +14,7 @@ public class LevelCharacter {
         level+=1;
     }
 
-
+/* refactor la boucle en avec en la sipriment HINT:héritage power */
     public void attack(Character c) {
         for (int compteur = 0; compteur < level; compteur++) {
             c.receiveDamage(this);
