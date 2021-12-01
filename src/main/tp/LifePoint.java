@@ -13,7 +13,7 @@ public class LifePoint {
     }
 
     public void heal() {
-        if (lifePoint < 1000)
+        if (lifePoint < MAX_LIFE_POINT)
             lifePoint++;
     }
 
@@ -23,11 +23,11 @@ public class LifePoint {
 
     }
     private void substractHealthpoint(){
-        if (lifePoint > 0)
+        if (lifePoint > MIN_LIFE_POINT)
             lifePoint--;
     }
     private void isDeath(ALive isAlive, LevelCharacter l){
-        if (lifePoint == 0)
+        if (lifePoint == MIN_LIFE_POINT)
             isAlive.giveExperienceWhenDie(l);
 
     }
