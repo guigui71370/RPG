@@ -2,36 +2,30 @@ package main.tp;
 
 public class Character {
     //private LevelCharacter level =new LevelCharacter();
-    private final LifePoint lifePoint;
+
     private final ALive isAlive;
 
     public Character(){
-        lifePoint=new LifePoint();
-        isAlive=new ALive(new LevelCharacter());
+
+        isAlive=new ALive();
     }
 
 
     public void attackCharacter(Character c){
-        isAlive.attack(c);
+        isAlive.authorizeAttackOnCharacter(c.isAlive);
+    }
+    public void receiveDamage(Point damageReceive) {
+
     }
     public void healCharacter(Character c){
-        isAlive.heal(c);
-    }
-
-    public void receiveDamage(LevelCharacter l) {
-        lifePoint.attack(isAlive, l);
-    }
-
-    public void receiveHeal() {
-        isAlive.authorizeHeal(lifePoint);
 
     }
+
 
     @Override
     public String toString() {
         return "Character{" +
-                "lifePoint=" + lifePoint +
-                ", isAlive=" + isAlive +
+                "isAlive=" + isAlive +
                 '}';
     }
 
@@ -43,10 +37,12 @@ public class Character {
         System.out.println("C2 "+c2);
         System.out.println("C3 "+c3);
 
-       for (int i = 0; i < 1000; i++) {
+       for (int i = 0; i < 1101; i++) {
             c1.attackCharacter(c2);
 
-        }       for (int i = 0; i < 1000; i++) {
+        }
+       c3.attackCharacter(c2);
+       for (int i = 0; i < 1000; i++) {
             c1.attackCharacter(c3);
 
         }
@@ -60,7 +56,7 @@ public class Character {
         *
         *
         *
-        * */
+        *
         System.out.println("healing test");
         System.out.println("C2 "+c2);
         c1.healCharacter(c2);
@@ -71,7 +67,7 @@ public class Character {
         System.out.println("C4 "+c4);
 
         c1.healCharacter(c4);
-        System.out.println("C4 "+c4);
+        System.out.println("C4 "+c4);*/
     }
 
 

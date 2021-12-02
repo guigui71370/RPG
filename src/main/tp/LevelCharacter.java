@@ -5,26 +5,13 @@ public class LevelCharacter {
     private static final int START_LEVEL = 1;
 
 
-    private int level;
+    private Point level;
 
     public LevelCharacter() {
-        level=START_LEVEL;
-    }
-    public void levelUp(){
-        level+=1;
+        level=new Point();
+        level.pointSetMinLevelPoint();
     }
 
-/* refactor la boucle en avec en la sipriment HINT:héritage power */
-    public void attack(Character c) {
-        for (int compteur = 0; compteur < level; compteur++) {
-            c.receiveDamage(this);
-        }
-    }
-    public void healLevel(Character c) {
-        for (int compteur = 0; compteur < level; compteur++) {
-            c.receiveHeal();
-        }
-    }
 
     @Override
     public String toString() {
@@ -34,4 +21,7 @@ public class LevelCharacter {
     }
 
 
+    public void attackOnCharacter(Character c) {
+        c.receiveDamage(level);
+    }
 }

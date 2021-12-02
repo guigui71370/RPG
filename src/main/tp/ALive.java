@@ -3,50 +3,38 @@ package main.tp;
 public class ALive {
 
     private boolean isAlive;
-    LevelCharacter levelCharacter;
+    private Stat stat;
 
-    public ALive(LevelCharacter level) {
+    public ALive() {
         isAlive = true;
-        levelCharacter = level;
+        stat =new Stat();
     }
 
 
-    public void attack(Character c) {
-        if (isAlive) {
-            levelCharacter.attack(c);
+
+    public  void authorizeAttackOnCharacter(ALive c) {
+        if(isAlive){
+            c.receiveDamage(stat);
         }
     }
 
-    public void heal(Character c) {
-        if (isAlive) {
-            levelCharacter.healLevel(c);
+    private void receiveDamage(Stat statCharacterWhoGiftDamage) {
+        if(isAlive){
+            stat.receiveDamage(statCharacterWhoGiftDamage);
+            stat.isDeath(this,statCharacterWhoGiftDamage);
         }
     }
 
-    private void death() {
-        isAlive = false;
-    }
-
-    public void giveExperienceWhenDie(LevelCharacter l) {
-        if (isAlive) {
-            l.levelUp();
-            death();
-        }
-    }
 
     @Override
     public String toString() {
         return "ALive{" +
                 "isAlive=" + isAlive +
-                ", levelCharacter=" + levelCharacter +
+                ", stat=" + stat +
                 '}';
     }
 
-
-    public void authorizeHeal(LifePoint lifePoint) {
-        if(isAlive){
-            lifePoint.heal();
-        }
-
+    public void death() {
+        isAlive=false;
     }
 }
