@@ -9,7 +9,7 @@ public class Point {
        point=0;
     }
     public void pointSetMaxLifePoint(){
-        point=1000;
+        point=MAX_LIFE_POINT;
     }
 
     public void pointSetMinLevelPoint(){
@@ -21,8 +21,11 @@ public class Point {
      public void subtractHealthPoint(Point damageReceive){
         point-=damageReceive.point;
      }
-     public void addHealthPoint(Point healthPoint){
-        healthPoint.point-=point;
+     public void addHealthPoint(Point healthReceive){
+         point+=healthReceive.point;
+         if(point>MAX_LIFE_POINT){
+             point=MAX_LIFE_POINT;
+         }
      }
 
     @Override
@@ -33,7 +36,7 @@ public class Point {
     }
 
     public void lifePointEqualZero(ALive aLive, Stat statCharacterWhoGiftDamage) {
-        if(point<=0){
+        if(point<=MIN_LIFE_POINT){
             point=0;
             aLive.death();
             statCharacterWhoGiftDamage.levelUp();

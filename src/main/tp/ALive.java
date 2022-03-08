@@ -24,7 +24,17 @@ public class ALive {
             stat.isDeath(this,statCharacterWhoGiftDamage);
         }
     }
+    public void healCharacter(ALive c) {
+        if(isAlive){
+            c.receiveHeal(stat);
+        }
+    }
 
+    private void receiveHeal(Stat statCharacterWhoGiftHeal) {
+        if(isAlive){
+            stat.receiveHeal(statCharacterWhoGiftHeal);
+        }
+    }
 
     @Override
     public String toString() {
@@ -37,4 +47,6 @@ public class ALive {
     public void death() {
         isAlive=false;
     }
+
+
 }

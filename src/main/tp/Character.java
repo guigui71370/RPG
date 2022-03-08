@@ -14,11 +14,9 @@ public class Character {
     public void attackCharacter(Character c){
         isAlive.authorizeAttackOnCharacter(c.isAlive);
     }
-    public void receiveDamage(Point damageReceive) {
 
-    }
     public void healCharacter(Character c){
-
+        isAlive.healCharacter(c.isAlive);
     }
 
 
@@ -42,10 +40,12 @@ public class Character {
 
         }
        c3.attackCharacter(c2);
-       for (int i = 0; i < 1000; i++) {
+       for (int i = 0; i < 499; i++) {
             c1.attackCharacter(c3);
 
         }
+        c2.attackCharacter(c3);
+        c1.healCharacter(c3);
 
         System.out.println("C1 "+c1);
         System.out.println("C2 "+c2);
@@ -56,18 +56,19 @@ public class Character {
         *
         *
         *
-        *
+        **/
         System.out.println("healing test");
         System.out.println("C2 "+c2);
         c1.healCharacter(c2);
         System.out.println("C2 "+c2);
         Character c4=new Character();
         c1.attackCharacter(c4);
-        c1.attackCharacter(c4);
+
         System.out.println("C4 "+c4);
 
         c1.healCharacter(c4);
-        System.out.println("C4 "+c4);*/
+        c1.healCharacter(c4);
+        System.out.println("C4 "+c4);
     }
 
 

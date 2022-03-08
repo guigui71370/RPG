@@ -4,8 +4,8 @@ public class Stat {
     private static final int MAX_LIFE_POINT = 1000;
     private static final int MIN_LIFE_POINT = 0;
 
-    private Point lifePoint;
-    private Point level;
+    private final Point lifePoint;
+    private final Point level;
 
     Stat() {
         lifePoint=new Point();
@@ -34,5 +34,9 @@ public class Stat {
 
     public void levelUp() {
         level.levelUpPoint();
+    }
+
+    public void receiveHeal(Stat statCharacterWhoGiftHeal) {
+        lifePoint.addHealthPoint(statCharacterWhoGiftHeal.level);
     }
 }
